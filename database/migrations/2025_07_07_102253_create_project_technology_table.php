@@ -13,7 +13,8 @@ return new class extends Migration
     {
         Schema::create('project_technology', function (Blueprint $table) {
             $table->id();
-            $table->timestamps();
+            $table->foreignId('project_id')->constrained()->onDelete('cascade');
+            $table->foreignId('technology_id')->constrained()->onDelete('cascade');
         });
     }
 
@@ -22,6 +23,8 @@ return new class extends Migration
      */
     public function down(): void
     {
+        Schema::disableForeignKeyConstraints();
         Schema::dropIfExists('project_technology');
+        Schema::enableForeignKeyConstraints();
     }
 };

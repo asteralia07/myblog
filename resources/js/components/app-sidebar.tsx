@@ -17,6 +17,11 @@ const mainNavItems: NavItem[] = [
         title: 'Posts',
         href: '/dashboard/posts',
         icon: BookOpen,
+    },
+    {
+        title: 'Technologies',
+        href: '/dashboard/technologies',
+        icon: BookOpen,
     }
 ];
 
