@@ -25,6 +25,11 @@ Route::middleware(['auth', 'verified'])->group(function () {
 
     //Technologies
     Route::get('dashboard/technologies', [TechnologyController::class, 'index'])->name('technologies.index');
+    Route::get('technologies/create', [TechnologyController::class, 'create'])->name('technologies.create');
+    Route::post('technologies/store', [TechnologyController::class, 'store'])->name('technologies.store');
+    Route::get('technologies/edit/{technology}',[TechnologyController::class, 'edit'])->name('technologies.edit');
+    Route::put('technologies/update/{technology}',[TechnologyController::class, 'update'])->name('technologies.update');
+    Route::delete('technologies/delete/{technology}', [TechnologyController::class, 'destroy'])->name('technologies.destroy');
 
 });
 

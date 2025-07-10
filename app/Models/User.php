@@ -50,4 +50,9 @@ class User extends Authenticatable
     {
         return $this->hasMany(Post::class);
     }
+
+    public function technologies()
+    {
+        return $this->hasMany(Technology::class);
+    }
 }

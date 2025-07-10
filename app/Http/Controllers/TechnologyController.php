@@ -17,7 +17,7 @@ class TechnologyController extends Controller
     {
         $technologies = Technology::all();
 
-        return Inertia::render('technologies/index', [
+        return inertia::render('technologies/index', [
             'technologies' => TechnologyResource::collection($technologies),
         ]);
     }
@@ -27,7 +27,11 @@ class TechnologyController extends Controller
      */
     public function create()
     {
-        //
+        $technologies = Technology::all();
+
+        return Inertia::render('technologies/create', [
+            'technologies' => $technologies
+        ]);
     }
 
     /**
@@ -35,7 +39,13 @@ class TechnologyController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $data = $request->validate([
+           'name' => 'required'
+        ]);
+
+        $request->user()->technologies()->create($data);
+
+        return to_route('technologies.index')->with('success', 'Technology created Successfully.');
     }
 
     /**
@@ -49,24 +59,35 @@ class TechnologyController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(string $id)
+    public function edit(Technology $technology)
     {
-        //
+        return inertia('technologies/edit', [
+            'currentTechnology' => new TechnologyResource($technology),
+        ]);
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(Request $request, Technology $technology)
     {
-        //
+        $data = $request->validate([
+            'name' => 'required'
+        ]);
+
+        $technology->update($data);
+
+        return to_route('technologies.index')->with('success', 'Technology Updated Successfully');
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(string $id)
+    public function destroy(Technology $technology)
     {
-        //
+
+        $technology->delete();
+
+        return to_route('technologies.index')->with('success', 'Technology deleted Successfully.');
     }
 }
