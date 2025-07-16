@@ -13,6 +13,9 @@ return new class extends Migration
     {
         Schema::create('technologies', function (Blueprint $table) {
             $table->id();
+            $table->string('name')->unique();
+            $table->foreignId('user_id')->constrained()->onDelete('cascade');
+            $table->softDeletes();
             $table->timestamps();
         });
     }
@@ -22,6 +25,8 @@ return new class extends Migration
      */
     public function down(): void
     {
+        Schema::disableForeignKeyConstraints();
         Schema::dropIfExists('technologies');
+        Schema::enableForeignKeyConstraints();
     }
 };

@@ -48,3 +48,8 @@ export interface Post {
     content: string;
     image: string;
 }
+
+export interface Technology {
+    id: number;
+    name: string;
+}

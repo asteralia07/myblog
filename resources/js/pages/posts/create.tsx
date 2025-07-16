@@ -28,7 +28,7 @@ type PostForm = {
 
 export default function PostCreate() {
 
-    const [imagePreview, SetImagePreview] = useState<string | mull>(null);
+    const [imagePreview, SetImagePreview] = useState<string | null>(null);
 
     const { data, setData, post, processing, errors } = useForm<PostForm>({
         title: '',

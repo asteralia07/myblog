@@ -13,6 +13,12 @@ return new class extends Migration
     {
         Schema::create('experiences', function (Blueprint $table) {
             $table->id();
+            $table->string('title');
+            $table->string('company');
+            $table->string('period');
+            $table->text('description')->nullable();
+            $table->foreignId('user_id')->constrained()->onDelete('cascade');
+            $table->softDeletes();
             $table->timestamps();
         });
     }
@@ -22,6 +28,8 @@ return new class extends Migration
      */
     public function down(): void
     {
+        Schema::disableForeignKeyConstraints();
         Schema::dropIfExists('experiences');
+        Schema::enableForeignKeyConstraints();
     }
 };
