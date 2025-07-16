@@ -1,6 +1,6 @@
 
 import AppLayout from '@/layouts/app-layout';
-import { type BreadcrumbItem } from '@/types';
+import { type, BreadcrumbItem } from '@/types';
 import {Head, usePage, router} from '@inertiajs/react';
 import {Label} from "@/components/ui/label";
 import {Input} from "@/components/ui/input";
@@ -23,7 +23,7 @@ const breadcrumbs: BreadcrumbItem[] = [
 
 export default function TechnologyEdit({currentTechnology}: {currentTechnology: Technology}) {
 
-    const [name, SetName] = useState<string>(currentTechnology.title || null);
+    const [name, SetName] = useState<string>(currentTechnology.name || null);
     const { errors } = usePage().props;
 
     // const { data, setData, post, processing, errors } = useForm<PostForm>({

@@ -1,5 +1,5 @@
 import AppLayout from '@/layouts/app-layout';
-import { type BreadcrumbItem } from '@/types';
+import { type, BreadcrumbItem } from '@/types';
 import { Head, Link, usePage } from '@inertiajs/react';
 import { toast} from "sonner";
 
@@ -60,12 +60,12 @@ export default function TechnologyIndex({technologies}: {technologies: Technolog
                         </TableHeader>
                         <TableBody>
                             {technologies.map((technology) => (
-                                <TableRow key={technologies.id}>
+                                <TableRow key={technology.id}>
                                     <TableCell className="font-medium">{technology.id}</TableCell>
-                                    <TableCell>{technology.title}</TableCell>
+                                    <TableCell>{technology.name}</TableCell>
                                     <TableCell className="text-right">
-                                        <Link href={route('technologies.edit', technology.id)} className="text-indigo-500 hover:text-indigo-600"> Edit</Link>
-                                        <Link href={route('technologies.destroy', technology.id)} method="delete" className="ml-2 text-indigo-500 hover:text-indigo-600">Delete</Link>
+                                        <Link href={route('technologies.edit',{ technology: technology.id })} className="text-indigo-500 hover:text-indigo-600"> Edit</Link>
+                                        <Link href={route('technologies.destroy', { technology: technology.id })} method="delete" className="ml-2 text-indigo-500 hover:text-indigo-600">Delete</Link>
                                     </TableCell>
                                 </TableRow>
                             ))}
