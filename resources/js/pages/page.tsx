@@ -11,7 +11,16 @@ import Navigation from "@/portfolio-components/navigation"
 import Footer from "@/portfolio-components/footer"
 import ChatWidget from "@/portfolio-components/chat-widget"
 
-export default function Portfolio() {
+type Props = {
+    categories: {
+        name: string;
+        description: string;
+        icon: string;
+        technologies: string[];
+    }[];
+};
+
+export default function Porfolio(props: Props) {
   const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 })
 
   useEffect(() => {
@@ -54,7 +63,7 @@ export default function Portfolio() {
       <HeroSection />
       <ExperienceSection />
       <AchievementsSection />
-      <TechStackSection />
+      <TechStackSection categories={props.categories} />
       <ProjectsSection />
       <ContactSection />
       <Footer />

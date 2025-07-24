@@ -4,10 +4,10 @@ use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
 use App\Http\Controllers\PostController;
 use App\Http\Controllers\TechnologyController;
+use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\PorfolioController;
 
-Route::get('/', function () {
-    return Inertia::render('page');
-})->name('home');
+Route::get('/', [PorfolioController::class, 'portfolio'])->name('home');
 
 Route::middleware(['auth', 'verified'])->group(function () {
     Route::get('dashboard', function () {
@@ -30,6 +30,14 @@ Route::middleware(['auth', 'verified'])->group(function () {
     Route::get('technologies/edit/{technology}',[TechnologyController::class, 'edit'])->name('technologies.edit');
     Route::put('technologies/update/{technology}',[TechnologyController::class, 'update'])->name('technologies.update');
     Route::delete('technologies/delete/{technology}', [TechnologyController::class, 'destroy'])->name('technologies.destroy');
+
+    //Categories
+    Route::get('dashboard/categories', [CategoryController::class, 'index'])->name('categories.index');
+    Route::get('categories/create', [CategoryController::class, 'create'])->name('categories.create');
+    Route::post('categories/store', [CategoryController::class, 'store'])->name('categories.store');
+    Route::get('categories/edit/{category}',[CategoryController::class, 'edit'])->name('categories.edit');
+    Route::put('categories/update/{category}',[CategoryController::class, 'update'])->name('categories.update');
+    Route::delete('categories/delete/{category}', [CategoryController::class, 'destroy'])->name('categories.destroy');
 
 });
 

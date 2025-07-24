@@ -22,6 +22,11 @@ const mainNavItems: NavItem[] = [
         title: 'Technologies',
         href: '/dashboard/technologies',
         icon: BookOpen,
+    },
+    {
+        title: 'Categories',
+        href: '/dashboard/categories',
+        icon: BookOpen,
     }
 ];
 
