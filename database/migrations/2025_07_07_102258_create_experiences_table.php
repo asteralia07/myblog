@@ -13,9 +13,10 @@ return new class extends Migration
     {
         Schema::create('experiences', function (Blueprint $table) {
             $table->id();
-            $table->string('title');
+            $table->string('job_title');
             $table->string('company');
-            $table->string('period');
+            $table->date('period_from');
+            $table->date('period_to');
             $table->text('description')->nullable();
             $table->foreignId('user_id')->constrained()->onDelete('cascade');
             $table->softDeletes();
