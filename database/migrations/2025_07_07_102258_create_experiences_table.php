@@ -16,7 +16,7 @@ return new class extends Migration
             $table->string('job_title');
             $table->string('company');
             $table->date('period_from');
-            $table->date('period_to');
+            $table->date('period_to')->nullable();
             $table->text('description')->nullable();
             $table->foreignId('user_id')->constrained()->onDelete('cascade');
             $table->softDeletes();

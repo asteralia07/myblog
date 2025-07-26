@@ -6,6 +6,7 @@ use App\Http\Controllers\PostController;
 use App\Http\Controllers\TechnologyController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\PorfolioController;
+use App\Http\Controllers\ExperienceController;
 
 Route::get('/', [PorfolioController::class, 'portfolio'])->name('home');
 
@@ -38,6 +39,14 @@ Route::middleware(['auth', 'verified'])->group(function () {
     Route::get('categories/edit/{category}',[CategoryController::class, 'edit'])->name('categories.edit');
     Route::put('categories/update/{category}',[CategoryController::class, 'update'])->name('categories.update');
     Route::delete('categories/delete/{category}', [CategoryController::class, 'destroy'])->name('categories.destroy');
+
+    //Experiences
+    Route::get('dashboard/experiences', [ExperienceController::class, 'index'])->name('experiences.index');
+    Route::get('experiences/create', [ExperienceController::class, 'create'])->name('experiences.create');
+    Route::post('experiences/store', [ExperienceController::class, 'store'])->name('experiences.store');
+    Route::get('experiences/edit/{experience}',[ExperienceController::class, 'edit'])->name('experiences.edit');
+    Route::put('experiences/update/{experience}',[ExperienceController::class, 'update'])->name('experiences.update');
+    Route::delete('experiences/delete/{experience}', [ExperienceController::class, 'destroy'])->name('experiences.destroy');
 
 });
 
