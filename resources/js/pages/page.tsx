@@ -13,15 +13,23 @@ import ChatWidget from "@/portfolio-components/chat-widget"
 import {Head} from '@inertiajs/react'
 
 type Props = {
+    profile: {
+        title: string,
+        content: string,
+        image: string,
+        section,
+        // Add other fields from your Post model if needed
+    };
+
     categories: {
-        name: string;
-        description: string;
-        icon: string;
-        technologies: string[];
+        name: string,
+        description: string,
+        icon: string,
+        technologies: string[],
     }[];
 
     experiences: {
-        job_title: string,
+        job_title: string;
         description: string,
         company: string,
         period_from: Date,
@@ -35,7 +43,7 @@ type Props = {
         year: string,
         image: string,
         url: string,
-        technologies: string[];
+        technologies: string[],
     }[];
 };
 
@@ -86,11 +94,11 @@ export default function Porfolio(props: Props) {
             </div>
 
             <Navigation/>
-            <HeroSection/>
+            <HeroSection profile={props.profile}/>
             <ExperienceSection experiences={props.experiences}/>
-            <AchievementsSection achievements={props.achievements}/>
-            <TechStackSection categories={props.categories}/>
             <ProjectsSection/>
+            <TechStackSection categories={props.categories}/>
+            <AchievementsSection achievements={props.achievements}/>
             <ContactSection/>
             <Footer/>
 

@@ -34,6 +34,7 @@ class PostController extends Controller
         $data = $request->validate([
             'title' => 'required',
             'content' => 'required',
+            'section' => 'required',
             'image' => 'required|image'
         ]);
 
@@ -62,7 +63,8 @@ class PostController extends Controller
         $data = $request->validate([
             'title' => 'required',
             'content' => 'required',
-            'image' => 'required|image',
+            'section' => 'required',
+            'image' => 'nullable|image',
         ]);
 
         $data['slug'] = str($data['title'])->slug();
