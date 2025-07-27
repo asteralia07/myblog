@@ -2,7 +2,7 @@
 
 import { Card } from "@/portfolio-components/ui/card"
 import { Badge } from "@/portfolio-components/ui/badge"
-import { Database, Server, Palette, Smartphone, Globe } from "lucide-react"
+import { Database, Server, Palette, Smartphone, Globe, ClipboardList } from "lucide-react"
 import { useInView } from "@/hooks/use-in-view"
 
 type Props = {
@@ -16,6 +16,7 @@ const iconMap: Record<string, React.ElementType> = {
     Database,
     Globe,
     Smartphone,
+    ClipboardList
 };
 
 export default function TechStackSection({ categories = [] }: Props) {
