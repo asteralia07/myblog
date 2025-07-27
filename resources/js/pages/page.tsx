@@ -27,7 +27,16 @@ type Props = {
         period_from: Date,
         period_to: Date | null,
         description: string,
-    }[],
+    }[];
+
+    achievements: {
+        title: string,
+        description: string,
+        year: string,
+        image: string,
+        url: string,
+        technologies: string[];
+    }[];
 };
 
 export default function Porfolio(props: Props) {
@@ -79,7 +88,7 @@ export default function Porfolio(props: Props) {
             <Navigation/>
             <HeroSection/>
             <ExperienceSection experiences={props.experiences}/>
-            <AchievementsSection/>
+            <AchievementsSection achievements={props.achievements}/>
             <TechStackSection categories={props.categories}/>
             <ProjectsSection/>
             <ContactSection/>

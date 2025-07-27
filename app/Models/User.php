@@ -55,4 +55,9 @@ class User extends Authenticatable
     {
         return $this->hasMany(Technology::class);
     }
+
+    public function achievements()
+    {
+        return $this->hasMany(Achievement::class);
+    }
 }

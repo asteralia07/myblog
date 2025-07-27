@@ -32,6 +32,11 @@ const mainNavItems: NavItem[] = [
         title: 'Experiences',
         href: '/dashboard/experiences',
         icon: BookOpen,
+    },
+    {
+        title: 'Achievements',
+        href: '/dashboard/achievements',
+        icon: BookOpen,
     }
 ];
 

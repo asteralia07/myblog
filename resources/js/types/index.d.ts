@@ -60,3 +60,12 @@ export interface Category {
     description: string,
     icon: string,
 }
+
+export interface Achievement {
+    id: number,
+    title: string,
+    icon: string,
+    description: string,
+    year: string,
+    image: string,
+}
