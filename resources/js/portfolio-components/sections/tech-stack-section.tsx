@@ -39,7 +39,6 @@ export default function TechStackSection({ categories = [] }: Props) {
                 <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-8">
                     {categories.map((stack, index) => {
                         const Icon = iconMap[stack.icon] || Palette;
-
                         return (
                             <Card
                                 key={index}
