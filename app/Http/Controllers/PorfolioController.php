@@ -4,9 +4,11 @@ namespace App\Http\Controllers;
 
 use App\Http\Resources\AchievementResource;
 use App\Http\Resources\ExperienceResource;
+use App\Http\Resources\ProjectResource;
 use App\Models\Achievement;
 use App\Models\Experience;
 use App\Models\Post;
+use App\Models\Project;
 use Illuminate\Http\Request;
 use App\Models\Category;
 use Inertia\Inertia;
@@ -20,12 +22,17 @@ class PorfolioController extends Controller
         $categories = Category::with('technologies', 'user')->get();
         $experiences = Experience::with('technologies', 'user')->orderby('id', 'desc')->get();
         $achievements = Achievement::with('technologies', 'user')->orderby('year', 'desc')->get();
+        $projects = Project::with('technologies', 'user')
+            ->orderByDesc('featured')
+            ->orderBy('id', 'desc')
+            ->get();
 
         return inertia::render('page', [
             'profile' => new PostResource($profile),
             'categories' => CategoryResource::collection($categories),
             'experiences' => ExperienceResource::collection($experiences),
-            'achievements' => AchievementResource::collection($achievements)
+            'achievements' => AchievementResource::collection($achievements),
+            'projects' => ProjectResource::collection($projects)
         ]);
     }
 }
