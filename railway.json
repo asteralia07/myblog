@@ -3,7 +3,7 @@
     "env": {
       "APP_ENV": "production"
     },
-    "command": "composer install && php artisan config:cache && php artisan migrate --force"
+    "command": "composer install && cp public/database.sqlite /data/database.sqlite && php artisan config:cache && php artisan migrate --force"
   },
   "start": "php artisan serve --host=0.0.0.0 --port=$PORT"
 }
