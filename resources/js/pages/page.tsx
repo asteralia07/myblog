@@ -18,7 +18,6 @@ type Props = {
         content: string,
         image: string,
         section,
-        // Add other fields from your Post model if needed
     };
 
     categories: {
@@ -45,11 +44,21 @@ type Props = {
         url: string,
         technologies: string[],
     }[];
+
+    projects: {
+        title: string,
+        description: string,
+        github: string,
+        live: string,
+        featured: boolean,
+        stats_users:string,
+        stats_rating: number,
+        technologies: string[],
+    }[];
 };
 
 export default function Porfolio(props: Props) {
     const [mousePosition, setMousePosition] = useState({x: 0, y: 0})
-
     useEffect(() => {
         const handleMouseMove = (e: MouseEvent) => {
             setMousePosition({x: e.clientX, y: e.clientY})
@@ -96,7 +105,7 @@ export default function Porfolio(props: Props) {
             <Navigation/>
             <HeroSection profile={props.profile}/>
             <ExperienceSection experiences={props.experiences}/>
-            <ProjectsSection/>
+            <ProjectsSection projects={props.projects}/>
             <TechStackSection categories={props.categories}/>
             <AchievementsSection achievements={props.achievements}/>
             <ContactSection/>

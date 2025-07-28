@@ -19,15 +19,6 @@ import {
 import Image from "@/portfolio-components/ui/Image";
 import { useInView } from "@/hooks/use-in-view";
 
-type Achievement = {
-    icon: keyof typeof iconMap;
-    title: string;
-    description: string;
-    year: string;
-    image: string;
-    stats?: string;
-    technologies: { id: string | number; name: string }[];
-};
 
 type Props = {
     achievements: Achievement[];

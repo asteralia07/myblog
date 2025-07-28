@@ -11,7 +11,7 @@ class Project extends Model
 
     protected $fillable = [
         'title', 'description', 'image', 'github', 'live', 'featured',
-        'stats_users', 'stats_rating', 'user_id'
+        'stats_users', 'stats_rating', 'user_id', 'slug'
     ];
 
     public function technologies()

@@ -37,6 +37,11 @@ const mainNavItems: NavItem[] = [
         title: 'Achievements',
         href: '/dashboard/achievements',
         icon: BookOpen,
+    },
+    {
+        title: 'Projects',
+        href: '/dashboard/projects',
+        icon: BookOpen,
     }
 ];
 

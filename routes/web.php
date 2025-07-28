@@ -8,6 +8,7 @@ use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\PorfolioController;
 use App\Http\Controllers\ExperienceController;
 use App\Http\Controllers\AchievementController;
+use App\Http\Controllers\ProjectController;
 
 Route::get('/', [PorfolioController::class, 'portfolio'])->name('home');
 
@@ -56,6 +57,14 @@ Route::middleware(['auth', 'verified'])->group(function () {
     Route::get('achievements/edit/{achievement}',[AchievementController::class, 'edit'])->name('achievements.edit');
     Route::put('achievements/update/{achievement}',[AchievementController::class, 'update'])->name('achievements.update');
     Route::delete('achievements/delete/{achievement}', [AchievementController::class, 'destroy'])->name('achievements.destroy');
+
+    //Projects
+    Route::get('dashboard/projects', [ProjectController::class, 'index'])->name('projects.index');
+    Route::get('projects/create', [ProjectController::class, 'create'])->name('projects.create');
+    Route::post('projects/store', [ProjectController::class, 'store'])->name('projects.store');
+    Route::get('projects/edit/{project}',[ProjectController::class, 'edit'])->name('projects.edit');
+    Route::put('projects/update/{project}',[ProjectController::class, 'update'])->name('projects.update');
+    Route::delete('projects/delete/{project}', [ProjectController::class, 'destroy'])->name('projects.destroy');
 
 });
 

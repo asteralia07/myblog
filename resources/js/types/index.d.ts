@@ -69,3 +69,17 @@ export interface Achievement {
     year: string,
     image: string,
 }
+
+export interface Project {
+    id: number,
+    title: string,
+    description: string,
+    github: string,
+    live: string,
+    featured: boolean,
+    stats_users:string,
+    stats_ratings: number,
+    image: string,
+}
+
+
