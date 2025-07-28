@@ -55,6 +55,18 @@ type Props = {
         stats_rating: number,
         technologies: string[],
     }[];
+
+    socials: {
+        id: number,
+        socials: string,
+        description: string,
+        url: string,
+        icons: string,
+        socials: string,
+        handle: string
+    }[];
+
+
 };
 
 export default function Porfolio(props: Props) {
@@ -71,7 +83,6 @@ export default function Porfolio(props: Props) {
 
         return () => window.removeEventListener("mousemove", handleMouseMove)
     }, [])
-
     return (
         <div className="min-h-screen bg-gradient-to-br from-blue-50 via-white to-indigo-50 dark:from-slate-950 dark:via-blue-950 dark:to-slate-900 relative overflow-hidden">
             <Head title="Portfolio"/>
@@ -103,7 +114,7 @@ export default function Porfolio(props: Props) {
             </div>
 
             <Navigation/>
-            <HeroSection profile={props.profile}/>
+            <HeroSection profile={props.profile} socials={props.socials}/>
             <ExperienceSection experiences={props.experiences}/>
             <ProjectsSection projects={props.projects}/>
             <TechStackSection categories={props.categories}/>
