@@ -30,7 +30,6 @@ export default function SocialCreate() {
         description: '',
         url: '',
         icons: '',
-        socials: '',
         handle: ''
 
     });
