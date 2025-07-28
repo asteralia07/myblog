@@ -1,6 +1,6 @@
 {
   "build": [
-    "composer install",
+    "composer install --no-dev --optimize-autoloader",
     "php artisan config:cache",
     "php artisan migrate --force",
     "npm install --prefix client",
