@@ -22,6 +22,26 @@ const mainNavItems: NavItem[] = [
         title: 'Technologies',
         href: '/dashboard/technologies',
         icon: BookOpen,
+    },
+    {
+        title: 'Categories',
+        href: '/dashboard/categories',
+        icon: BookOpen,
+    },
+    {
+        title: 'Experiences',
+        href: '/dashboard/experiences',
+        icon: BookOpen,
+    },
+    {
+        title: 'Achievements',
+        href: '/dashboard/achievements',
+        icon: BookOpen,
+    },
+    {
+        title: 'Projects',
+        href: '/dashboard/projects',
+        icon: BookOpen,
     }
 ];
 

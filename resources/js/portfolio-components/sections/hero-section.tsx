@@ -8,8 +8,14 @@ import Image from '@/portfolio-components/ui/Image';
 import {Link} from '@inertiajs/react';
 import {useState, useEffect} from "react"
 import {useInView} from "@/hooks/use-in-view"
+import {Post} from "@/types";
 
-export default function HeroSection() {
+type Props = {
+    profile: Post[];
+};
+
+export default function HeroSection({profile}: Props) {
+
     const [isVisible, setIsVisible] = useState(false)
     const {ref, inView} = useInView({threshold: 0.1})
 
@@ -62,12 +68,12 @@ export default function HeroSection() {
             gradient: "from-blue-500 to-cyan-600",
         },
         {
-            icon: <MapPin className="w-2.5 h-2.5 md:w-3 md:h-3 mr-1 md:mr-2" />,
+            icon: <MapPin className="w-2.5 h-2.5 md:w-3 md:h-3 mr-1 md:mr-2"/>,
             text: "Bay, Laguna, Philippines",
             gradient: "from-indigo-500 to-blue-600",
         },
         {
-            icon: <Calendar className="w-2.5 h-2.5 md:w-3 md:h-3 mr-1 md:mr-2" />,
+            icon: <Calendar className="w-2.5 h-2.5 md:w-3 md:h-3 mr-1 md:mr-2"/>,
             text: getExperienceText(),
             gradient: "from-cyan-500 to-blue-600",
         },
@@ -101,8 +107,8 @@ export default function HeroSection() {
                             <div
                                 className="relative w-48 h-48 sm:w-64 sm:h-64 md:w-72 md:h-72 lg:w-80 lg:h-80 rounded-full overflow-hidden border-2 md:border-4 border-white dark:border-slate-800 shadow-2xl group-hover:scale-105 transition-all duration-500">
                                 <Image
-                                    src="/profile.jpg?height=360&width=320"
-                                    alt="Joshua Pagdonsolan - Full Stack Developer"
+                                    src={profile.image}
+                                    alt={profile.title}
                                     width={320}
                                     height={320}
                                     className="w-full h-full object-cover object-top animate-fade-in"
@@ -147,7 +153,7 @@ export default function HeroSection() {
                         <div>
                             {/* Responsive Typography */}
                             <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-black mb-4 md:mb-6 bg-gradient-to-r from-blue-900 via-blue-600 to-indigo-600 bg-clip-text text-transparent leading-tight tracking-tight animate-text-shimmer">
-                                Joshua Pagdonsolan
+                                {profile.title}
                             </h1>
                             <div
                                 className="flex flex-col sm:flex-row items-center justify-center lg:justify-start space-y-2 sm:space-y-0 sm:space-x-4 mb-4 md:mb-6">
@@ -164,7 +170,7 @@ export default function HeroSection() {
                                     <Badge
                                         key={index}
                                         className={`bg-gradient-to-r ${badge.gradient} text-white px-2 py-1 md:px-4 md:py-2 text-xs md:text-sm font-medium shadow-lg animate-fade-in-up hover:scale-105 transition-transform duration-300`}
-                                        style={{ animationDelay: `${600 + index * 100}ms` }}
+                                        style={{animationDelay: `${600 + index * 100}ms`}}
                                     >
                                         {badge.icon}
                                         <span className="hidden sm:inline">{badge.text}</span>
@@ -174,19 +180,24 @@ export default function HeroSection() {
                             </div>
 
                             {/* Description - Mobile Responsive */}
-                            <p className="text-base sm:text-lg md:text-xl lg:text-2xl text-slate-600 dark:text-slate-300 leading-relaxed mb-6 md:mb-10 font-light animate-fade-in-up delay-700 px-4 lg:px-0">
-                                Crafting digital experiences that blend{" "}
-                                <span
-                                    className="font-semibold bg-gradient-to-r from-blue-600 to-indigo-600 bg-clip-text text-transparent">
-                  innovation
-                </span>{" "}
-                                with{" "}
-                                <span
-                                    className="font-semibold bg-gradient-to-r from-indigo-600 to-cyan-600 bg-clip-text text-transparent">
-                  functionality
-                </span>
-                                . Specialized in building scalable web applications.
-                            </p>
+                            {/*<p className="text-base sm:text-lg md:text-xl lg:text-2xl text-slate-600 dark:text-slate-300 leading-relaxed mb-6 md:mb-10 font-light animate-fade-in-up delay-700 px-4 lg:px-0">*/}
+                                {/*Crafting digital experiences that blend{" "}*/}
+                                {/*<span*/}
+                                    {/*className="font-semibold bg-gradient-to-r from-blue-600 to-indigo-600 bg-clip-text text-transparent">*/}
+                                  {/*innovation*/}
+                                {/*</span>{" "}*/}
+                                {/*with{" "}*/}
+                                {/*<span*/}
+                                    {/*className="font-semibold bg-gradient-to-r from-indigo-600 to-cyan-600 bg-clip-text text-transparent">*/}
+                                  {/*functionality*/}
+                                {/*</span>*/}
+                                {/*. Specialized in building scalable web applications.*/}
+                            {/*</p>*/}
+                            <p
+                                className="text-base sm:text-lg md:text-xl lg:text-2xl text-slate-600 dark:text-slate-300 leading-relaxed mb-6 md:mb-10 font-light animate-fade-in-up delay-700 px-4 lg:px-0"
+                                dangerouslySetInnerHTML={{ __html: profile.content }}
+                            />
+
 
                             {/* CTA Buttons - Mobile Responsive */}
                             <div

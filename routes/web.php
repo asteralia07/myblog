@@ -4,10 +4,13 @@ use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
 use App\Http\Controllers\PostController;
 use App\Http\Controllers\TechnologyController;
+use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\PorfolioController;
+use App\Http\Controllers\ExperienceController;
+use App\Http\Controllers\AchievementController;
+use App\Http\Controllers\ProjectController;
 
-Route::get('/', function () {
-    return Inertia::render('page');
-})->name('home');
+Route::get('/', [PorfolioController::class, 'portfolio'])->name('home');
 
 Route::middleware(['auth', 'verified'])->group(function () {
     Route::get('dashboard', function () {
@@ -30,6 +33,38 @@ Route::middleware(['auth', 'verified'])->group(function () {
     Route::get('technologies/edit/{technology}',[TechnologyController::class, 'edit'])->name('technologies.edit');
     Route::put('technologies/update/{technology}',[TechnologyController::class, 'update'])->name('technologies.update');
     Route::delete('technologies/delete/{technology}', [TechnologyController::class, 'destroy'])->name('technologies.destroy');
+
+    //Categories
+    Route::get('dashboard/categories', [CategoryController::class, 'index'])->name('categories.index');
+    Route::get('categories/create', [CategoryController::class, 'create'])->name('categories.create');
+    Route::post('categories/store', [CategoryController::class, 'store'])->name('categories.store');
+    Route::get('categories/edit/{category}',[CategoryController::class, 'edit'])->name('categories.edit');
+    Route::put('categories/update/{category}',[CategoryController::class, 'update'])->name('categories.update');
+    Route::delete('categories/delete/{category}', [CategoryController::class, 'destroy'])->name('categories.destroy');
+
+    //Experiences
+    Route::get('dashboard/experiences', [ExperienceController::class, 'index'])->name('experiences.index');
+    Route::get('experiences/create', [ExperienceController::class, 'create'])->name('experiences.create');
+    Route::post('experiences/store', [ExperienceController::class, 'store'])->name('experiences.store');
+    Route::get('experiences/edit/{experience}',[ExperienceController::class, 'edit'])->name('experiences.edit');
+    Route::put('experiences/update/{experience}',[ExperienceController::class, 'update'])->name('experiences.update');
+    Route::delete('experiences/delete/{experience}', [ExperienceController::class, 'destroy'])->name('experiences.destroy');
+
+    //Experiences
+    Route::get('dashboard/achievements', [AchievementController::class, 'index'])->name('achievements.index');
+    Route::get('achievements/create', [AchievementController::class, 'create'])->name('achievements.create');
+    Route::post('achievements/store', [AchievementController::class, 'store'])->name('achievements.store');
+    Route::get('achievements/edit/{achievement}',[AchievementController::class, 'edit'])->name('achievements.edit');
+    Route::put('achievements/update/{achievement}',[AchievementController::class, 'update'])->name('achievements.update');
+    Route::delete('achievements/delete/{achievement}', [AchievementController::class, 'destroy'])->name('achievements.destroy');
+
+    //Projects
+    Route::get('dashboard/projects', [ProjectController::class, 'index'])->name('projects.index');
+    Route::get('projects/create', [ProjectController::class, 'create'])->name('projects.create');
+    Route::post('projects/store', [ProjectController::class, 'store'])->name('projects.store');
+    Route::get('projects/edit/{project}',[ProjectController::class, 'edit'])->name('projects.edit');
+    Route::put('projects/update/{project}',[ProjectController::class, 'update'])->name('projects.update');
+    Route::delete('projects/delete/{project}', [ProjectController::class, 'destroy'])->name('projects.destroy');
 
 });
 

@@ -10,7 +10,7 @@ class Achievement extends Model
     use SoftDeletes;
 
     protected $fillable = [
-        'title', 'icon', 'description', 'year', 'image', 'user_id'
+        'title', 'icon', 'description', 'year', 'slug', 'image', 'url', 'user_id'
     ];
 
     public function technologies()

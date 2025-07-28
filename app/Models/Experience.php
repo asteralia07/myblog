@@ -10,7 +10,7 @@ class Experience extends Model
     use SoftDeletes;
 
     protected $fillable = [
-        'title', 'company', 'period', 'description', 'user_id'
+        'job_title', 'company', 'period_to', 'period_from', 'description', 'user_id'
     ];
 
     public function technologies()

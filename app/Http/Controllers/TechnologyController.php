@@ -40,7 +40,7 @@ class TechnologyController extends Controller
     public function store(Request $request)
     {
         $data = $request->validate([
-           'name' => 'required'
+            'name' => 'required|unique:technologies,name'
         ]);
 
         $request->user()->technologies()->create($data);
@@ -72,7 +72,7 @@ class TechnologyController extends Controller
     public function update(Request $request, Technology $technology)
     {
         $data = $request->validate([
-            'name' => 'required'
+            'name' => 'required|unique:technologies,name'
         ]);
 
         $technology->update($data);

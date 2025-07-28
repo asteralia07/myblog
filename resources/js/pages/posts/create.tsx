@@ -80,6 +80,21 @@ export default function PostCreate() {
                         </div>
 
                         <div className="grid gap-2">
+                            <Label htmlFor="section">Section</Label>
+                            <select
+                                id="section"
+                                value={data.section}
+                                onChange={(e) => setData('section', e.target.value)}
+                                className="border rounded-md p-2 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
+                            >
+                                <option value="">Select Section</option>
+                                <option value="hero">Hero</option>
+                                <option value="others">Others</option>
+                            </select>
+                            <InputError message={errors.section} />
+                        </div>
+
+                        <div className="grid gap-2">
                             <Label htmlFor="image">Image</Label>
                             <Input
                                 id="image"

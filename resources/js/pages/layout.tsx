@@ -1,5 +1,5 @@
 import type { Metadata } from 'next'
-import '../../../../../../Users/joshu/Downloads/webdev-portfolio (2)/app/globals.css'
+import '../../css/globals.css';
 
 export const metadata: Metadata = {
   title: 'v0 App',

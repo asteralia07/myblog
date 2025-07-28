@@ -58,6 +58,7 @@ export default function PostIndex({posts}: {posts: Post[]}) {
                                 <TableHead className="w-[100px]">ID</TableHead>
                                 <TableHead>Title</TableHead>
                                 <TableHead>Content</TableHead>
+                                <TableHead>Section</TableHead>
                                 <TableHead>Thumbnail</TableHead>
                                 <TableHead className="text-right">Action</TableHead>
                             </TableRow>
@@ -68,6 +69,7 @@ export default function PostIndex({posts}: {posts: Post[]}) {
                                     <TableCell className="font-medium">{post.id}</TableCell>
                                     <TableCell>{post.title}</TableCell>
                                     <TableCell>{post.content}</TableCell>
+                                    <TableCell>{post.section}</TableCell>
                                     <TableCell>
                                         <img src={post.image} alt={post.title} className="h-10 w-10 rounded-full object-cover" />
                                     </TableCell>

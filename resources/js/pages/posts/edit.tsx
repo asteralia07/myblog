@@ -25,6 +25,7 @@ export default function PostEdit({currentPost}: {currentPost: Post}) {
 
     const [title, SetTitle] = useState<string>(currentPost.title || null);
     const [content, SetContent] = useState<string>(currentPost.content || null);
+    const [section, SetSection] = useState<string>(currentPost.section || null);
     const [image, SetImage] = useState<File | null>(null);
     const [imagePreview, SetImagePreview] = useState<string | null>(null);
     const { errors } = usePage().props;
@@ -50,6 +51,7 @@ export default function PostEdit({currentPost}: {currentPost: Post}) {
             _method:'put',
             title,
             content,
+            section,
             image,
         });
     };
@@ -81,6 +83,21 @@ export default function PostEdit({currentPost}: {currentPost: Post}) {
                                 onChange={(e) => SetContent(e.target.value)}
                             />
                             <InputError message={errors.content} />
+                        </div>
+
+                        <div className="grid gap-2">
+                            <Label htmlFor="section">Section</Label>
+                            <select
+                                id="section"
+                                value={section}
+                                onChange={(e) => SetSection(e.target.value)}
+                                className="border rounded-md p-2 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
+                            >
+                                <option value="">-- Select Section --</option>
+                                <option value="hero">Hero</option>
+                                <option value="others">Others</option>
+                            </select>
+                            <InputError message={errors.section} />
                         </div>
 
                         <div className="grid gap-2">

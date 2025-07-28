@@ -53,3 +53,33 @@ export interface Technology {
     id: number;
     name: string;
 }
+
+export interface Category {
+    id: number,
+    name: string,
+    description: string,
+    icon: string,
+}
+
+export interface Achievement {
+    id: number,
+    title: string,
+    icon: string,
+    description: string,
+    year: string,
+    image: string,
+}
+
+export interface Project {
+    id: number,
+    title: string,
+    description: string,
+    github: string,
+    live: string,
+    featured: boolean,
+    stats_users:string,
+    stats_ratings: number,
+    image: string,
+}
+
+

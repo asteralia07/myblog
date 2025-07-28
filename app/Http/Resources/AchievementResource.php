@@ -5,7 +5,7 @@ namespace App\Http\Resources;
 use Illuminate\Http\Request;
 use Illuminate\Http\Resources\Json\JsonResource;
 
-class PostResource extends JsonResource
+class AchievementResource extends JsonResource
 {
     /**
      * Transform the resource into an array.
@@ -17,9 +17,15 @@ class PostResource extends JsonResource
         return [
             'id' => $this->id,
             'title' => $this->title,
-            'content' => $this->content,
-            'section' => $this->section,
+            'icon' => $this->icon,
+            'description' => $this->description,
+            'year' => $this->year,
             'image' => asset('storage/' . $this->image),
+            'url' => $this->url,
+            'technologies' => $this->technologies->map(fn($tech) => [
+                'id' => $tech->id,
+                'name' => $tech->name,
+            ])
         ];
     }
 }
