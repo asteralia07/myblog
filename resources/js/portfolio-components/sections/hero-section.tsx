@@ -3,18 +3,39 @@
 import {Badge} from "@/portfolio-components/ui/badge"
 import {Button} from "@/portfolio-components/ui/button"
 import {Card} from "@/portfolio-components/ui/card"
-import {Send, Download, MapPin, Calendar, Sparkles, Zap, Target, Github, Linkedin, Mail} from "lucide-react"
+import {
+    Send,
+    Download,
+    MapPin,
+    Calendar,
+    Sparkles,
+    Zap,
+    Target,
+    Github,
+    Linkedin,
+    Mail,
+    Palette,
+    Server, Database, Globe, Smartphone, ClipboardList
+} from "lucide-react"
 import Image from '@/portfolio-components/ui/Image';
 import {Link} from '@inertiajs/react';
 import {useState, useEffect} from "react"
 import {useInView} from "@/hooks/use-in-view"
-import {Post} from "@/types";
+import {Post, Social} from "@/types";
 
 type Props = {
     profile: Post[];
+    socials: Social[];
 };
 
-export default function HeroSection({profile}: Props) {
+// map icon strings to actual components
+const iconMap: Record<string, React.ElementType> = {
+    Github,
+    Linkedin,
+    Mail,
+};
+
+export default function HeroSection({ profile, socials }: Props) {
 
     const [isVisible, setIsVisible] = useState(false)
     const {ref, inView} = useInView({threshold: 0.1})
@@ -22,30 +43,6 @@ export default function HeroSection({profile}: Props) {
     useEffect(() => {
         setIsVisible(true)
     }, [])
-
-    const socials = [
-        {
-            icon: Github,
-            label: "GitHub",
-            handle: "@joshuapagdonsolan",
-            followers: "2.5K",
-            href: "#",
-        },
-        {
-            icon: Linkedin,
-            label: "LinkedIn",
-            handle: "/in/joshuapagdonsolan",
-            followers: "5K+",
-            href: "#",
-        },
-        {
-            icon: Mail,
-            label: "Email",
-            handle: "joshua@example.com",
-            followers: "Available",
-            href: "mailto:joshua@example.com",
-        },
-    ]
 
     const getExperienceText = () => {
         const startDate = new Date("2022-06-01");
@@ -238,30 +235,32 @@ export default function HeroSection({profile}: Props) {
                     </h3>
                     <div
                         className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 md:gap-8 max-w-4xl mx-auto px-4">
-                        {socials.map((social, index) => (
-                            <Card
-                                key={index}
-                                className="p-4 md:p-8 bg-white/60 dark:bg-slate-800/60 backdrop-blur-sm border-0 shadow-xl rounded-2xl md:rounded-3xl hover:shadow-2xl transition-all duration-500 hover:scale-105 border border-blue-100 dark:border-blue-800 animate-fade-in-up"
-                                style={{animationDelay: `${1200 + index * 200}ms`}}
-                            >
-                                <Link href={social.href} className="block text-center group">
-                                    <div
-                                        className="w-12 h-12 md:w-16 md:h-16 bg-gradient-to-br from-blue-500 to-indigo-600 rounded-xl md:rounded-2xl flex items-center justify-center mx-auto mb-3 md:mb-4 group-hover:scale-110 transition-transform duration-300 shadow-lg animate-bounce-gentle">
-                                        <social.icon className="h-6 w-6 md:h-8 md:w-8 text-white"/>
-                                    </div>
-                                    <h4 className="font-bold text-lg md:text-xl text-slate-900 dark:text-slate-100 mb-1 md:mb-2">
-                                        {social.label}
-                                    </h4>
-                                    <p className="text-slate-600 dark:text-slate-400 mb-2 text-sm md:text-base truncate">
-                                        {social.handle}
-                                    </p>
-                                    <Badge
-                                        className="bg-gradient-to-r from-blue-500 to-indigo-600 text-white animate-pulse-subtle text-xs md:text-sm">
-                                        {social.followers}
-                                    </Badge>
-                                </Link>
-                            </Card>
-                        ))}
+                        {socials.map((social, index) => {
+                            const Icon = iconMap[social.icons] || Palette;
+
+                            return (
+                                <Card
+                                    key={index}
+                                    className="p-4 md:p-8 bg-white/60 dark:bg-slate-800/60 backdrop-blur-sm border-0 shadow-xl rounded-2xl md:rounded-3xl hover:shadow-2xl transition-all duration-500 hover:scale-105 border border-blue-100 dark:border-blue-800 animate-fade-in-up"
+                                    style={{ animationDelay: `${1200 + index * 200}ms` }}
+                                >
+                                    <Link href={social.url} className="block text-center group">
+                                        <div className="w-12 h-12 md:w-16 md:h-16 bg-gradient-to-br from-blue-500 to-indigo-600 rounded-xl md:rounded-2xl flex items-center justify-center mx-auto mb-3 md:mb-4 group-hover:scale-110 transition-transform duration-300 shadow-lg animate-bounce-gentle">
+                                            <Icon className="w-6 h-6 text-white" />
+                                        </div>
+                                        <h4 className="font-bold text-lg md:text-xl text-slate-900 dark:text-slate-100 mb-1 md:mb-2">
+                                            {social.socials}
+                                        </h4>
+                                        <p className="text-slate-600 dark:text-slate-400 mb-2 text-sm md:text-base truncate">
+                                            {social.handle}
+                                        </p>
+                                        <Badge className="bg-gradient-to-r from-blue-500 to-indigo-600 text-white animate-pulse-subtle text-xs md:text-sm">
+                                            {social.description}
+                                        </Badge>
+                                    </Link>
+                                </Card>
+                            );
+                        })}
                     </div>
                 </div>
             </div>

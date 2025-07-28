@@ -9,6 +9,7 @@ use App\Http\Controllers\PorfolioController;
 use App\Http\Controllers\ExperienceController;
 use App\Http\Controllers\AchievementController;
 use App\Http\Controllers\ProjectController;
+use App\Http\Controllers\SocialController;
 
 Route::get('/', [PorfolioController::class, 'portfolio'])->name('home');
 
@@ -65,6 +66,14 @@ Route::middleware(['auth', 'verified'])->group(function () {
     Route::get('projects/edit/{project}',[ProjectController::class, 'edit'])->name('projects.edit');
     Route::put('projects/update/{project}',[ProjectController::class, 'update'])->name('projects.update');
     Route::delete('projects/delete/{project}', [ProjectController::class, 'destroy'])->name('projects.destroy');
+
+    //Socials
+    Route::get('dashboard/socials', [SocialController::class, 'index'])->name('socials.index');
+    Route::get('socials/create', [SocialController::class, 'create'])->name('socials.create');
+    Route::post('socials/store', [SocialController::class, 'store'])->name('socials.store');
+    Route::get('socials/edit/{social}',[SocialController::class, 'edit'])->name('socials.edit');
+    Route::put('socials/update/{social}',[SocialController::class, 'update'])->name('socials.update');
+    Route::delete('socials/delete/{social}', [SocialController::class, 'destroy'])->name('socials.destroy');
 
 });
 

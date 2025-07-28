@@ -82,4 +82,14 @@ export interface Project {
     image: string,
 }
 
+export interface Social {
+    id: number,
+    socials: string,
+    description: string,
+    url: string,
+    icons: string,
+    socials: string,
+    handle: string
+}
+
 
