@@ -1,0 +1,22 @@
+services:
+- type: web
+  name: laravel-app
+  env: php
+  plan: free
+  buildCommand: |
+    composer install
+    php artisan config:cache
+    php artisan migrate --force
+    npm install --prefix client
+    npm run build --prefix client
+    cp -r client/dist/* public/
+  startCommand: php artisan serve --host=0.0.0.0 --port=10000
+  envVars:
+  - key: APP_ENV
+    value: production
+  - key: APP_KEY
+    value: base64:YOUR_GENERATED_APP_KEY
+  - key: DB_CONNECTION
+    value: sqlite
+  - key: DB_DATABASE
+    value: /opt/render/project/src/database/database.sqlite
