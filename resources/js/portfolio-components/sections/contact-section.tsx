@@ -37,7 +37,7 @@ export default function ContactSection() {
               </h3>
               <div className="space-y-3 md:space-y-6">
                 {[
-                  { icon: Mail, label: "Email", value: "joshua@example.com", gradient: "from-blue-500 to-cyan-500" },
+                  { icon: Mail, label: "Email", value: "joshua.pagdonsolan@gmail.com", gradient: "from-blue-500 to-cyan-500" },
                   {
                     icon: Calendar,
                     label: "Response Time",
@@ -47,7 +47,7 @@ export default function ContactSection() {
                   {
                     icon: MapPin,
                     label: "Location",
-                    value: "San Francisco, CA (Remote Available)",
+                    value: "Bay, Laguna, Philippines (Remote Available)",
                     gradient: "from-cyan-500 to-blue-500",
                   },
                 ].map((contact, index) => (
