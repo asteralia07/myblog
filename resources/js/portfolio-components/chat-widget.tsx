@@ -155,7 +155,7 @@ export default function ChatWidget() {
           id: Date.now() + 1,
           type: "bot",
           content:
-            "I'm currently experiencing some technical difficulties. Please feel free to contact Joshua directly at joshua@example.com for any questions!",
+            "I'm currently experiencing some technical difficulties. Please feel free to contact Joshua directly at joshua.pagdonsolan@gmail.com for any questions!",
           timestamp: new Date(),
         }
 
